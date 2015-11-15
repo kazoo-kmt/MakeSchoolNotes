@@ -51,7 +51,7 @@
                     <navigationItem key="navigationItem" title="Dashboard" id="Fzv-hA-yQa">
                         <barButtonItem key="leftBarButtonItem" systemItem="add" id="3rI-fq-ohR">
                             <connections>
-                                <segue destination="A3c-qI-4Ib" kind="show" id="Hyj-u5-CcS"/>
+                                <segue destination="A3c-qI-4Ib" kind="show" identifier="Add" id="Hyj-u5-CcS"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

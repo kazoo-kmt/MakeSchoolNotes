@@ -60,7 +60,7 @@
             </objects>
             <point key="canvasLocation" x="1159" y="-183"/>
         </scene>
-        <!--New Note View Controller-->
+        <!--Add New Note-->
         <scene sceneID="LAO-Hb-Mri">
             <objects>
                 <viewController id="A3c-qI-4Ib" customClass="NewNoteViewController" customModule="MakeSchoolNotes" customModuleProvider="target" sceneMemberID="viewController">
@@ -73,8 +73,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Add New Note" id="EJS-OM-BDn">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="nM6-pu-t1L">
+                            <connections>
+                                <segue destination="rFu-yy-ERS" kind="unwind" identifier="Cancel" unwindAction="unwindToSegue:" id="BP5-Ej-bt1"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="ExM-dc-iSg">
+                            <connections>
+                                <segue destination="rFu-yy-ERS" kind="unwind" identifier="Save" unwindAction="unwindToSegue:" id="748-wW-R0e"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zjR-U4-rST" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="rFu-yy-ERS" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1825" y="-183"/>
         </scene>

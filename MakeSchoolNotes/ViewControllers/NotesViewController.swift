@@ -44,6 +44,13 @@ class NotesViewController: UITableViewController {
     super.didReceiveMemoryWarning()
     // Dispose of any resources that can be recreated.
   }
+    
+    @IBAction func unwindToSegue(segue: UIStoryboardSegue) {
+        if let identifier = segue.identifier {
+            print("Identifier \(identifier)")
+        }
+    }
+
   
 }
 
@@ -67,4 +74,5 @@ extension NotesViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return notes?.count ?? 0
     }
-}
+    
+  }

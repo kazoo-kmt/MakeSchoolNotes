@@ -11,7 +11,7 @@ import RealmSwift
 import UIKit
 
 class NotesViewController: UITableViewController {
-    
+    var selectedNote: Note?
     var notes: Results<Note>! {
         didSet {
             //Whenever notes update, update the table view
@@ -57,7 +57,6 @@ class NotesViewController: UITableViewController {
                     try realm.write() {
                         realm.add(source.currentNote!)
                     }
-                //FIXME
                 case "Delete":
                     try realm.write() {
                         realm.delete(self.selectedNote!)
@@ -75,6 +74,13 @@ class NotesViewController: UITableViewController {
               } catch {
                 print("handle error")
               }
+        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "ShowExistingNote") {
+            let noteViewController = segue.destinationViewController as! NoteDisplayViewController
+            noteViewController.note = selectedNote
         }
     }
 }
@@ -101,7 +107,6 @@ extension NotesViewController {
 extension NotesViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        //FIXME
         selectedNote = notes[indexPath.row]
         
         self.performSegueWithIdentifier("ShowExistingNote", sender: self)

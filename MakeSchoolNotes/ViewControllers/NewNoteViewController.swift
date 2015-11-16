@@ -33,10 +33,17 @@ class NewNoteViewController: UIViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         
+        if (segue.identifier == "ShowNewNote") {
+            // create a new Note and hold onto it, to be able to save it later
+            currentNote = Note()
+            let noteViewController = segue.destinationViewController as! NoteDisplayViewController
+            noteViewController.note = currentNote
+        }
+/*
         currentNote = Note()
         currentNote!.title = "Super Simple Test Note"
         currentNote!.content = "Yet more content"
-        
+ */       
         
 
     }

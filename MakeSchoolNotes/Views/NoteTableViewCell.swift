@@ -29,5 +29,13 @@ class NoteTableViewCell: UITableViewCell {
             }
         }
     }
-    
+    /*
+    // FIXME
+    func displayNote(note: Note?) {
+        if let note = note, titleTextField = titleTextField, contentTextView = contentTextView {
+            titleTextField.text = note.title
+            contentTextView.text = note.content
+        }
+    }
+    */
 }

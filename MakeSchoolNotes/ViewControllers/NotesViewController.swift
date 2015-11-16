@@ -22,6 +22,7 @@ class NotesViewController: UITableViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     tableView.dataSource = self
+    tableView.delegate = self
     
     // Do any additional setup after loading the view, typically from a nib.
     let myNote = Note()
@@ -30,10 +31,9 @@ class NotesViewController: UITableViewController {
     
     do {
         let realm = try Realm()
-        try realm.write() {
-            realm.add(myNote)
-        }
-      // 1
+ //       try realm.write() {
+ //           realm.add(myNote)
+ //       }
       notes = realm.objects(Note)
     } catch {
         print("handle error")
@@ -47,11 +47,36 @@ class NotesViewController: UITableViewController {
     
     @IBAction func unwindToSegue(segue: UIStoryboardSegue) {
         if let identifier = segue.identifier {
-            print("Identifier \(identifier)")
+           do {
+                let realm = try Realm()
+            
+                switch identifier {
+                    
+                case "Save":
+                    let source = segue.sourceViewController as! NewNoteViewController
+                    try realm.write() {
+                        realm.add(source.currentNote!)
+                    }
+                //FIXME
+                case "Delete":
+                    try realm.write() {
+                        realm.delete(self.selectedNote!)
+                    }
+                    
+                    let source = segue.sourceViewController as! NoteDisplayViewController
+                    source.note = nil;
+                        
+                default:
+                    print("No one loves \(identifier)")
+                        
+                }
+                    
+                notes = realm.objects(Note).sorted("modificationDate", ascending: false)
+              } catch {
+                print("handle error")
+              }
         }
     }
-
-  
 }
 
 extension NotesViewController {
@@ -60,10 +85,6 @@ extension NotesViewController {
         -> UITableViewCell {
             let cell = tableView.dequeueReusableCellWithIdentifier("NoteCell", forIndexPath:
                 indexPath) as! NoteTableViewCell //1
-            /*
-            cell.titleLabel.text = "Hello"
-            cell.dateLabel.text = "Today"
-            */
             let row = indexPath.row
             let note = notes[row] as Note
             cell.note = note
@@ -76,3 +97,35 @@ extension NotesViewController {
     }
     
   }
+
+extension NotesViewController {
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        //FIXME
+        selectedNote = notes[indexPath.row]
+        
+        self.performSegueWithIdentifier("ShowExistingNote", sender: self)
+    }
+    
+    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            let note = notes[indexPath.row] as Object
+            
+            do {
+                let realm = try Realm()
+                try realm.write() {
+                    realm.delete(note)
+                }
+                
+                notes = realm.objects(Note).sorted("modificationDate", ascending: false)
+            } catch {
+                print("handle error")
+            }
+            
+        }
+    }
+}

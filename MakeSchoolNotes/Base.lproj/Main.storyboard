@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="qhm-XS-eR5">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Dashboard-->
@@ -55,6 +56,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="FYC-wm-UJZ" kind="show" identifier="ShowExistingNote" id="2Fg-u4-cMS"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lzf-Re-kSG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -71,6 +75,14 @@
                     <view key="view" contentMode="scaleToFill" id="fu7-pt-tTX">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E4L-WC-qk4">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <connections>
+                                    <segue destination="FYC-wm-UJZ" kind="embed" identifier="ShowNewNote" id="7ix-ae-R3P"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Add New Note" id="EJS-OM-BDn">
@@ -89,7 +101,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zjR-U4-rST" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="rFu-yy-ERS" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1825" y="-183"/>
+            <point key="canvasLocation" x="1853" y="-183"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="avV-VO-hBd">
@@ -110,5 +122,57 @@
             </objects>
             <point key="canvasLocation" x="347" y="-183"/>
         </scene>
+        <!--Note Display View Controller-->
+        <scene sceneID="zum-wR-dLq">
+            <objects>
+                <viewController id="FYC-wm-UJZ" userLabel="Note Display View Controller" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="x2X-eC-Bz2">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4ac-Eg-KZh">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <items>
+                                    <barButtonItem systemItem="trash" id="iOb-1v-jDb">
+                                        <connections>
+                                            <segue destination="kS7-16-pXj" kind="unwind" identifier="Delete" unwindAction="unwindToSegue:" id="0M4-Xf-Hdu"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lmm-80-Qld">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fyA-hH-FWO">
+                                        <rect key="frame" x="8" y="113" width="579" height="443"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0jy-p1-OYO">
+                                        <rect key="frame" x="8" y="75" width="584" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="4ac-Eg-KZh" firstAttribute="leading" secondItem="x2X-eC-Bz2" secondAttribute="leadingMargin" constant="-20" id="0Vw-oL-9Vo"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="4ac-Eg-KZh" secondAttribute="bottom" id="5jU-UN-Vtf"/>
+                            <constraint firstItem="4ac-Eg-KZh" firstAttribute="trailing" secondItem="x2X-eC-Bz2" secondAttribute="trailingMargin" constant="20" id="HuY-MK-TRX"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Oun-0C-axv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="kS7-16-pXj" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1853" y="535"/>
+        </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="2Fg-u4-cMS"/>
+    </inferredMetricsTieBreakers>
 </document>

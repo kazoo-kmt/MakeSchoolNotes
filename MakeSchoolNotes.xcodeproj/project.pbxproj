@@ -27,6 +27,7 @@
 		62466AB71BE0008300F84A78 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62466AB01BDFF66C00F84A78 /* RealmSwift.framework */; };
 		62466AB81BE0008300F84A78 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 62466AB01BDFF66C00F84A78 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C93864D11BF546DF0086532B /* NewNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93864D01BF546DF0086532B /* NewNoteViewController.swift */; };
+		C9D0475E1BF910E00038A478 /* NoteDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D0475D1BF910E00038A478 /* NoteDisplayViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +94,7 @@
 		62466AAF1BDFF66C00F84A78 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
 		62466AB01BDFF66C00F84A78 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
 		C93864D01BF546DF0086532B /* NewNoteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewNoteViewController.swift; sourceTree = "<group>"; };
+		C9D0475D1BF910E00038A478 /* NoteDisplayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteDisplayViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +180,7 @@
 			children = (
 				2EED6B601B9E53AC00CD5441 /* NotesViewController.swift */,
 				C93864D01BF546DF0086532B /* NewNoteViewController.swift */,
+				C9D0475D1BF910E00038A478 /* NoteDisplayViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -307,6 +310,7 @@
 				2EED6B5D1B9E535A00CD5441 /* StyleConstants.swift in Sources */,
 				2EED6B631B9E53BC00CD5441 /* NoteTableViewCell.swift in Sources */,
 				2EED6B5F1B9E539B00CD5441 /* Note.swift in Sources */,
+				C9D0475E1BF910E00038A478 /* NoteDisplayViewController.swift in Sources */,
 				C93864D11BF546DF0086532B /* NewNoteViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

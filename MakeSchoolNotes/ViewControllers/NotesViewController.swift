@@ -23,22 +23,22 @@ class NotesViewController: UITableViewController {
     super.viewDidLoad()
     tableView.dataSource = self
     tableView.delegate = self
-    
+    }
+/*
     // Do any additional setup after loading the view, typically from a nib.
     let myNote = Note()
     myNote.title = "Super Simple Test Note"
     myNote.content = "A long piece of content"
-    
+*/
+  override func viewWillAppear(animated: Bool) {
+    super.viewWillAppear(animated)
     do {
         let realm = try Realm()
- //       try realm.write() {
- //           realm.add(myNote)
- //       }
-      notes = realm.objects(Note)
+        notes = realm.objects(Note).sorted("modificationDate", ascending: false)
     } catch {
         print("handle error")
     }
-  }
+    }
   
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()

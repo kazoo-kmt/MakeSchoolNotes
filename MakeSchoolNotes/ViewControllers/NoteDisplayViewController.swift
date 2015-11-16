@@ -11,6 +11,7 @@ import RealmSwift
 
 class NoteDisplayViewController: UIViewController {
     
+
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var contentTextView: UITextView!
     
@@ -33,5 +34,27 @@ class NoteDisplayViewController: UIViewController {
             contentTextView.text = note.content
         }
     }
-
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        saveNote()
+    }
+    
+    func saveNote() {
+        if let note = note {
+            do {
+                let realm = try Realm()
+                
+                try realm.write {
+                    if (note.title != self.titleTextField.text || note.content != self.contentTextView.text) {
+                        note.title = self.titleTextField.text!
+                        note.modificationDate = NSDate()
+                    }
+                }
+            } catch {
+                print("handle error")
+            }
+            }
+        }
 }

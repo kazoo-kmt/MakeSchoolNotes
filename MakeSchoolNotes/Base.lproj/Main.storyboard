@@ -125,13 +125,17 @@
         <!--Note Display View Controller-->
         <scene sceneID="zum-wR-dLq">
             <objects>
-                <viewController id="FYC-wm-UJZ" userLabel="Note Display View Controller" sceneMemberID="viewController">
+                <viewController id="FYC-wm-UJZ" userLabel="Note Display View Controller" customClass="NoteDisplayViewController" customModule="MakeSchoolNotes" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="F5h-nI-flw"/>
+                        <viewControllerLayoutGuide type="bottom" id="Y56-5f-DI0"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="x2X-eC-Bz2">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4ac-Eg-KZh">
-                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="492" width="600" height="44"/>
                                 <items>
                                     <barButtonItem systemItem="trash" id="iOb-1v-jDb">
                                         <connections>
@@ -165,14 +169,18 @@
                             <constraint firstItem="4ac-Eg-KZh" firstAttribute="trailing" secondItem="x2X-eC-Bz2" secondAttribute="trailingMargin" constant="20" id="HuY-MK-TRX"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="contentTextView" destination="fyA-hH-FWO" id="jzK-92-Pdp"/>
+                        <outlet property="titleTextField" destination="0jy-p1-OYO" id="keI-gz-ghT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oun-0C-axv" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="kS7-16-pXj" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1853" y="535"/>
+            <point key="canvasLocation" x="1982" y="514"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="2Fg-u4-cMS"/>
+        <segue reference="7ix-ae-R3P"/>
     </inferredMetricsTieBreakers>
 </document>

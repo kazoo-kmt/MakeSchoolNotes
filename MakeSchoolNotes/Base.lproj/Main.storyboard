@@ -144,34 +144,53 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lmm-80-Qld">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lmm-80-Qld">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
                                 <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fyA-hH-FWO">
-                                        <rect key="frame" x="8" y="113" width="579" height="443"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fyA-hH-FWO">
+                                        <rect key="frame" x="8" y="43" width="579" height="440"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="440" id="NrQ-jv-OBd"/>
+                                        </constraints>
                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0jy-p1-OYO">
-                                        <rect key="frame" x="8" y="75" width="584" height="30"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0jy-p1-OYO">
+                                        <rect key="frame" x="8" y="7" width="584" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="fyA-hH-FWO" firstAttribute="top" secondItem="0jy-p1-OYO" secondAttribute="bottom" constant="6" id="8I4-iM-M58"/>
+                                    <constraint firstItem="fyA-hH-FWO" firstAttribute="leading" secondItem="Lmm-80-Qld" secondAttribute="leadingMargin" id="BpE-qQ-29H"/>
+                                    <constraint firstItem="0jy-p1-OYO" firstAttribute="leading" secondItem="fyA-hH-FWO" secondAttribute="leading" id="Clb-Rf-Pjj"/>
+                                    <constraint firstItem="0jy-p1-OYO" firstAttribute="trailing" secondItem="Lmm-80-Qld" secondAttribute="trailingMargin" id="OVC-2V-4Nc"/>
+                                    <constraint firstAttribute="trailing" secondItem="fyA-hH-FWO" secondAttribute="trailing" constant="13" id="Vgo-rf-mYj"/>
+                                    <constraint firstItem="0jy-p1-OYO" firstAttribute="top" secondItem="Lmm-80-Qld" secondAttribute="top" constant="7" id="exj-QW-IqW"/>
+                                    <constraint firstAttribute="bottom" secondItem="fyA-hH-FWO" secondAttribute="bottom" constant="73" id="jPi-7T-qTC"/>
+                                    <constraint firstItem="0jy-p1-OYO" firstAttribute="centerX" secondItem="Lmm-80-Qld" secondAttribute="centerX" id="sHt-gN-641"/>
+                                </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="4ac-Eg-KZh" firstAttribute="leading" secondItem="x2X-eC-Bz2" secondAttribute="leadingMargin" constant="-20" id="0Vw-oL-9Vo"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="4ac-Eg-KZh" secondAttribute="bottom" id="5jU-UN-Vtf"/>
-                            <constraint firstItem="4ac-Eg-KZh" firstAttribute="trailing" secondItem="x2X-eC-Bz2" secondAttribute="trailingMargin" constant="20" id="HuY-MK-TRX"/>
+                            <constraint firstItem="Lmm-80-Qld" firstAttribute="top" secondItem="F5h-nI-flw" secondAttribute="bottom" id="0gL-CA-DJM"/>
+                            <constraint firstItem="Lmm-80-Qld" firstAttribute="leading" secondItem="4ac-Eg-KZh" secondAttribute="leading" id="1nD-Nr-Y6Z"/>
+                            <constraint firstAttribute="trailing" secondItem="4ac-Eg-KZh" secondAttribute="trailing" id="NwE-QA-RFP"/>
+                            <constraint firstItem="4ac-Eg-KZh" firstAttribute="bottom" secondItem="Y56-5f-DI0" secondAttribute="top" id="Pzr-Y1-eXu"/>
+                            <constraint firstItem="Lmm-80-Qld" firstAttribute="trailing" secondItem="4ac-Eg-KZh" secondAttribute="trailing" id="UZF-Sz-mvE"/>
+                            <constraint firstItem="4ac-Eg-KZh" firstAttribute="leading" secondItem="x2X-eC-Bz2" secondAttribute="leading" id="g4a-cj-aPU"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="Lmm-80-Qld" secondAttribute="bottom" constant="-20" id="pre-Ae-dZF"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="contentTextView" destination="fyA-hH-FWO" id="jzK-92-Pdp"/>
+                        <outlet property="deleteButton" destination="iOb-1v-jDb" id="MSw-cF-oAw"/>
                         <outlet property="titleTextField" destination="0jy-p1-OYO" id="keI-gz-ghT"/>
+                        <outlet property="toolbarBottomSpace" destination="Pzr-Y1-eXu" id="vAM-u2-vYZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oun-0C-axv" userLabel="First Responder" sceneMemberID="firstResponder"/>

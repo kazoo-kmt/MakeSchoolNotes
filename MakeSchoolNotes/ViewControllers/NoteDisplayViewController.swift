@@ -55,6 +55,9 @@ class NoteDisplayViewController: UIViewController {
         if edit {
             deleteButton.enabled = false
         }
+        
+        self.navigationController!.setNavigationBarHidden(false, animated: true)
+        
     }
     
     //MARK: Business Logic

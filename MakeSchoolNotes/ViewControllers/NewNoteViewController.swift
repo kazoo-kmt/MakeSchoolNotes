@@ -9,7 +9,17 @@
 import UIKit
 
 class NewNoteViewController: UIViewController {
+/*
+    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var tableView: UITableView!
     
+    enum State {
+        case DefaultMode
+        case SearchMode
+    }
+    
+    var state: State = .DefaultMode
+*/    
     var currentNote: Note?
 
     override func viewDidLoad() {
@@ -48,5 +58,6 @@ class NewNoteViewController: UIViewController {
         
 
     }
+    
 
 }

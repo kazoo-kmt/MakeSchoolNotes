@@ -10,7 +10,41 @@
 import RealmSwift
 import UIKit
 
-class NotesViewController: UITableViewController {
+class NotesViewController: UIViewController {
+    
+    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var tableView: UITableView!
+    
+    enum State {
+        case DefaultMode
+        case SearchMode
+    }
+    
+    // FIXME: Search doesn't work....Need to check...
+    var state: State = .DefaultMode {
+        didSet {
+            switch (state) {
+            case .DefaultMode:
+                do {
+                    let realm = try Realm()
+                    notes = realm.objects(Note).sorted("modificationDate", ascending: false)
+                    self.navigationController!.setNavigationBarHidden(false, animated: true)
+                    searchBar.resignFirstResponder()
+                    searchBar.text = ""
+                    searchBar.showsCancelButton = false
+                } catch {
+                    print("realm error")
+                }
+            case .SearchMode:
+                let searchText = searchBar?.text ?? ""
+                searchBar.setShowsCancelButton(true, animated: true)
+                notes = searchNotes(searchText)
+                self.navigationController!.setNavigationBarHidden(true, animated: true)
+            }
+        }
+    }
+    
+
     var selectedNote: Note?
     var notes: Results<Note>! {
         didSet {
@@ -24,17 +58,13 @@ class NotesViewController: UITableViewController {
     tableView.dataSource = self
     tableView.delegate = self
     }
-/*
-    // Do any additional setup after loading the view, typically from a nib.
-    let myNote = Note()
-    myNote.title = "Super Simple Test Note"
-    myNote.content = "A long piece of content"
-*/
+
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
     do {
         let realm = try Realm()
         notes = realm.objects(Note).sorted("modificationDate", ascending: false)
+        state = .DefaultMode
     } catch {
         print("handle error")
     }
@@ -83,11 +113,24 @@ class NotesViewController: UITableViewController {
             noteViewController.note = selectedNote
         }
     }
+    
+    func searchNotes(searchString: String) -> Results<Note>? {
+        do {
+            let realm = try Realm()
+            let searchPredicate = NSPredicate(format: "title CONTAINS[c] %@ OR content CONTAINS[c] %a", searchString, searchString)
+            return realm.objects(Note).filter(searchPredicate)
+        } catch {
+            print("realm error")
+            return nil
+        }
+    }
+    
 }
 
-extension NotesViewController {
+//extension NotesViewController: {
+extension NotesViewController: UITableViewDataSource {
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath)
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath)
         -> UITableViewCell {
             let cell = tableView.dequeueReusableCellWithIdentifier("NoteCell", forIndexPath:
                 indexPath) as! NoteTableViewCell //1
@@ -98,25 +141,26 @@ extension NotesViewController {
             return cell
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return notes?.count ?? 0
     }
     
   }
 
-extension NotesViewController {
+//extension NotesViewController: {
+extension NotesViewController: UITableViewDelegate {
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         selectedNote = notes[indexPath.row]
         
         self.performSegueWithIdentifier("ShowExistingNote", sender: self)
     }
     
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         return true
     }
     
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             let note = notes[indexPath.row] as Object
             
@@ -132,5 +176,19 @@ extension NotesViewController {
             }
             
         }
+    }
+}
+
+extension NotesViewController: UISearchBarDelegate {
+    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        state = .SearchMode
+    }
+    
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        state = .DefaultMode
+    }
+    
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        notes = searchNotes(searchText)
     }
 }

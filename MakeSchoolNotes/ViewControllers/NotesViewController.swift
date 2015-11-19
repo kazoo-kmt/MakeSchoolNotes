@@ -117,7 +117,7 @@ class NotesViewController: UIViewController {
     func searchNotes(searchString: String) -> Results<Note>? {
         do {
             let realm = try Realm()
-            let searchPredicate = NSPredicate(format: "title CONTAINS[c] %@ OR content CONTAINS[c] %a", searchString, searchString)
+            let searchPredicate = NSPredicate(format: "title CONTAINS[c] %@ OR content CONTAINS[c] %@", searchString, searchString)
             return realm.objects(Note).filter(searchPredicate)
         } catch {
             print("realm error")

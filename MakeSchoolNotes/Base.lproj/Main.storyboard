@@ -154,16 +154,13 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lmm-80-Qld">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lmm-80-Qld">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="492"/>
                                 <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fyA-hH-FWO">
-                                        <rect key="frame" x="8" y="43" width="579" height="0.0"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fyA-hH-FWO">
+                                        <rect key="frame" x="8" y="44" width="584" height="434"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" id="slO-rA-Xtj"/>
-                                        </constraints>
-                                        <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
@@ -175,12 +172,15 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="fyA-hH-FWO" firstAttribute="top" secondItem="0jy-p1-OYO" secondAttribute="bottom" constant="6" id="8I4-iM-M58"/>
+                                    <constraint firstItem="fyA-hH-FWO" firstAttribute="leading" secondItem="Lmm-80-Qld" secondAttribute="leading" constant="8" id="8xh-zA-B2l"/>
                                     <constraint firstItem="fyA-hH-FWO" firstAttribute="leading" secondItem="Lmm-80-Qld" secondAttribute="leadingMargin" id="BpE-qQ-29H"/>
                                     <constraint firstItem="0jy-p1-OYO" firstAttribute="leading" secondItem="fyA-hH-FWO" secondAttribute="leading" id="Clb-Rf-Pjj"/>
                                     <constraint firstItem="0jy-p1-OYO" firstAttribute="trailing" secondItem="Lmm-80-Qld" secondAttribute="trailingMargin" id="OVC-2V-4Nc"/>
                                     <constraint firstAttribute="trailing" secondItem="fyA-hH-FWO" secondAttribute="trailing" constant="13" id="Vgo-rf-mYj"/>
                                     <constraint firstItem="0jy-p1-OYO" firstAttribute="top" secondItem="Lmm-80-Qld" secondAttribute="top" constant="7" id="exj-QW-IqW"/>
                                     <constraint firstAttribute="bottom" secondItem="fyA-hH-FWO" secondAttribute="bottom" constant="73" id="jPi-7T-qTC"/>
+                                    <constraint firstItem="fyA-hH-FWO" firstAttribute="top" secondItem="0jy-p1-OYO" secondAttribute="bottom" constant="7" id="qlR-J5-FAP"/>
+                                    <constraint firstAttribute="trailing" secondItem="fyA-hH-FWO" secondAttribute="trailing" constant="8" id="qm6-Gq-RXb"/>
                                     <constraint firstItem="0jy-p1-OYO" firstAttribute="centerX" secondItem="Lmm-80-Qld" secondAttribute="centerX" id="sHt-gN-641"/>
                                 </constraints>
                             </scrollView>
